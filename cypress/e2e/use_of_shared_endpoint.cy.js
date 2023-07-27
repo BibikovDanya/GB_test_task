@@ -43,6 +43,30 @@ describe("Авторизация, использование endpoint",  () => {
         });
 
         // Получаем api ключ
+        let apiKey;
+        cy.get('[data-testid="apikeyButton"]')
+            .should('be.visible')
+            .click()
+        cy.get('.popup').then(() =>{
+            cy.contains('Copy')
+                .should('be.visible')
+                .click()
+        })
+
+        cy.window().then((win) => {
+            const clipboardValue = win.navigator.clipboard.readText();
+
+            // Проверяем значение в буфере обмена
+            clipboardValue.then((apiKeyValue) => {
+                console.log(`value:`, apiKeyValue)
+                console.log(`Type value:`, typeof(apiKeyValue))
+                console.log(`Length value:`, apiKeyValue.length)
+                // cy.log(typeof(value))
+                expect(typeof(apiKeyValue)).to.be.eq('string');
+                expect(apiKeyValue.length).to.be.eq(36);
+                apiKey = apiKeyValue;
+            });
+        });
 
         //endpoint
         cy.get('[data-testid="endpoint"] .flex-row button').eq(0)
