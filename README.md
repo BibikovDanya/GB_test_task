@@ -13,13 +13,15 @@
 ## Структура проекта
 
 ```
-├── cypress/
-|  └── e2e                      
-|       └──                   
+├── cypress
+|   └── e2e                      
+|       └──                         // e2e тесты           
 ├── fixtures                   
-|   └── 
+|   └── basePaths.json              // Базовые url
+|   ├── users.json                  // Данные учетных записей 
 ├── support
-|   └──
+|   └── commands.js                 // Дополнительные команды 
+|   ├── e2e.js                      // Конфигурация e2e тестов
 ├── .gitignore
 ├── README.md
 ├── cypress.config.js
