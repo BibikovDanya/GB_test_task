@@ -20,9 +20,7 @@ describe("Авторизация, использование endpoint", () => {
         cy.get('@endpointsUrl').then(endpointsUrl => {
             cy.get('@apiKey').then(apiKey => {
                 expect(endpointsUrl).to.contain(apiKey)
-                console.log(`Enpoints ${endpointsUrl}`)
-                
-                //запрос
+
                 cy.request({
                     method: 'POST',
                     url: endpointsUrl,
@@ -42,7 +40,6 @@ describe("Авторизация, использование endpoint", () => {
                     expect(keys).to.contain('difficulty')
                     expect(keys).to.contain('networkhashps')
                     expect(keys).to.contain('pooledtx')
-                    console.log(board.body.result.warnings)
                 })
             })
 

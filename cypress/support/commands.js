@@ -55,9 +55,6 @@ Cypress.Commands.add('getEndpointsUrl', () => {
     return cy.window().then((win) => {
         return win.navigator.clipboard.readText();
     }).then((endpointsUrl) => {
-        console.log(`EndpointsUrl value:`, endpointsUrl)
-        console.log(`Type value:`, typeof (endpointsUrl))
-        console.log(`Length value:`, endpointsUrl.length)
 
         expect(typeof (endpointsUrl)).to.be.eq('string');
         expect(endpointsUrl.length).to.be.eq(69);
